@@ -24,6 +24,21 @@
 
 const Queue = require('./queue');
 
-function weave(sourceOne, sourceTwo) {}
+function weave(sourceOne, sourceTwo) {
+    const mergeArr = [];
+    const q1 = sourceOne.get();
+    const q2 = sourceTwo.get()
+    const maxLength = q1.length >= q2.length ? q1.length : q2.length;
+  
+    for(let i = 0 ;i<maxLength; ++i){
+        if(q2[i])mergeArr.push(q2[i]);
+        if(q1[i])mergeArr.push(q1[i]);        
+    }
+    const q = new Queue();
+    mergeArr.reverse()
+    mergeArr.forEach(i=>q.add(i))    
+    console.log(q)
+    return q
+}
 
 module.exports = weave;
